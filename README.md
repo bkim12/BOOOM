@@ -104,7 +104,7 @@ The objective function is evaluated only at valid Stiefel points generated via r
 
 
 <p align="center">
-  <img src="images/BOOOM_concept.png" width="85%">
+  <img src="figures/BOOOM_concept.png" width="85%">
 </p>
 
 
