@@ -1,26 +1,20 @@
 # BOOOM: Black-box Optimization over Orthonormal Manifolds
 
-**BOOOM** (*Black-box Optimization over Orthonormal Manifolds*) is a general-purpose global optimization method for **orthonormal matrix estimation** under **any form of objective functions (non-convex, multi-modal, non-differentiable)**.
+**BOOOM** (*Black-box Optimization over Orthonormal Manifolds*) is a general-purpose global optimization method for **orthonormal matrix estimation** under **any form of objective functions** including non-convex, multi-modal, non-differentiable objectives.
 
-BOOOM operates **directly on the Stiefel manifold space**, ensuring an **orthonormal matrix at every iteration**, while supporting **global, gradient-free optimization**. This approach leverages **recursive pattern search algorithm**.
-
----
-
-### Notation note
-The Stiefel manifold is the set of all matrices with orthonormal columns. We define it as $\mathrm{St}(p,d)=\lbrace Q\in ℝ^{p\times d}: Q^\top Q=I_d\,\rbrace$, i.e, the set of $p\times d$ (column) orthonormal matrices. We focuse on the case $(p \geq d)$ in the project.
+BOOOM performs optimization **directly on the Stiefel manifold**, ensuring feasibility (orthonormal columns) at every iteration, and leverages **Recursive Modified Pattern Search (RMPS)** to enable restart-based global exploration without requiring gradient or Hessian information.
 
 ---
 
-
-## Repository Structure
+## 📂 Repository Structure
 
 
 ```text
 BOOOM/
 ├── Benchmark/                 # Benchmark experiments and comparisons
-├── Real data analysis/        # Real-data application (.... analysis)
-├── Simulation study1/         # Simulation study (Heterogeneous quadratic form analysis)
-├── Simulation study2/         # Simulation study (Low rank and sparse matrix decomposition analysis)
+├── Real data analysis/        # Real-data application 
+├── Simulation study1/         # Simulation: heterogeneous quadratic form analysis
+├── Simulation study2/         # Simulation: low-rank and sparse decomposition analysis
 ├── figures/                   # Figures used in the paper/README (e.g., diagrams, flowcharts)
 └── README.md                  # Main repository README
 ```
@@ -29,22 +23,22 @@ BOOOM/
 
 ---
 
-## Key Features
+## 🔑 Key Features
 
-- **Guaranteed validity**  
-  Every iterate produced by BOOOM is under the Stiefel manifold $\mathrm{St}(p,d)$.
+- **Feasibility by construction**  
+  Every iterate remains on the Stiefel manifold $\mathrm{St}(p,d)$.
   
 - **Black-box optimization**  
-  The objective function only needs to be *evaluated*. No gradients, Hessians, likelihood structure, or smoothness assumptions are required.
+  Requires only objective evaluations (no gradients/Hessians/smoothness assumptions).
 
 - **Penalty-agnostic**  
-  Supports both convex and non-convex penalties fully customizable user-defined penalties.
+  Supports user defined penalties, including convex and nonconvex penalties.
 
 - **Global exploration**  
-  Built-in restart and step-size reset mechanisms allow the algorithm to systematically escape poor local minima and explore the objective landscape.
+  Built-in restart and step-size reset mechanisms help escape poor local minima.
 
 - **Parallelizable**  
-  Coordinate-wise objective evaluations can be executed in parallel.  
+  Candidate directions within an iteration can be evaluated independently.
   For a $p\times d$ orthonormal matrix, up to $p(p−1)$ coordinate directions can be evaluated simultaneously.
   
 - **Scalable to high dimensions**  
@@ -52,10 +46,24 @@ BOOOM/
 
 ---
 
+## Notation note
 
-##  Problem Setting
+The **Stiefel manifold** is the set of all matrices with orthonormal columns. 
 
-Let O denote an orthonormal  $p\times d$  matrix $p \geq d$.  
+Define $\mathrm{St}(p,d)=\lbrace Q\in ℝ^{p\times d}: Q^\top Q=I_d\,\rbrace$, i.e, the set of $p\times d$ (column) orthonormal matrices.
+
+---
+
+
+
+
+## 📌 Problem Setting
+
+BOOOM addresses **general orthonormal matrix estimation problems** arising in high-dimensional statistics, machine learning, and signal processing, where the objective function may be non-convex, multi-modal, non-smooth, or available only as a black box. Such problems appear in a wide range of applications, including dimension reduction, subspace learning, matrix factorization, joint diagonalization, and low-rank structure estimation.
+
+Rather than restricting attention to likelihood-based or differentiable formulations, BOOOM formulates orthonormal matrix estimation as a general constrained optimization problem over the Stiefel manifold, allowing the objective to encode arbitrary loss functions, penalties, or data-dependent criteria.
+
+Specifically, let $Q$ denote an orthonormal  $p\times d$  matrix $p \geq d$.  
 BOOOM solves optimization problems of the form:
 
 <pre>
@@ -65,15 +73,30 @@ subject to Q ∈ St(p,d)
 
 where:
 
-- **$f(\cdot)$** is an arbitrary real-valued function 
+- **$f(\cdot)$** is a user specified real-valued objective function.
+
+This formulation accommodates a broad class of objectives, including but not limited to:
+
+- quadratic and non-quadratic loss functions,
+
+- robust and truncated losses,
+
+- non-smooth penalties,
+
+- objectives defined implicitly through simulation, resampling, or external solvers.
+
+
+The resulting optimization problem is typically non-convex and defined over a geometrically constrained parameter space, placing it out side the scope of classical gradint-based or smooth manifold optimization methods.
+
 ---
 
 
 ##   Method Overview
 
+### Geometry preserving reparameteriation
 
-BOOOM repramatrize domain space $\mathrm{St}(p,d)$ to $𝜃 ∈ (0, \pi)$ search over rotation parameters, enabling the use of robust black-box optimization techniques.
-BOOOM leverages a complete Givens rotation  to reparameterize the Stiefel manifold.
+BOOOM reparameterizes the Stiefel manifold using Givens rotation, converting maniold constrained optimization into a bounded search over rotation angles. 
+
 Starting from a fixed orthonormal base matrix $Q_0 ∈ St(p,d)$, any point on $\mathrm{St}(p,d)$ can be reaced by premultiplying a finite sequence of Givens rotations,
 each rotating two coordinate axes by an angle  $𝜃 ∈ (0, \pi)$
 
@@ -107,14 +130,13 @@ This parameterization:
 - Converts manifold constraints into bounded scalar parameters
 
 
----
 ### Optimization via Recursive Modified Pattern Search (RMPS)
 
 Once parameterized, BOOOM performs optimization using Recursive Modified Pattern Search (RMPS), a derivative-free global optimization algorithm.
 RMPS explores the rotation parameters by:
 
 - Evaluating coordinate-wise perturbations of rotation angles
-- Recursively refining promising directions
+- Recursively refining promising directions via step size reduction
 - Parallel local searches in parameter space
 
 
@@ -124,3 +146,11 @@ The objective function is evaluated only at the matrix under the valid Stiefel m
 <p align="center">
   <img src="figures/BOOOM_concept.png" width="85%">
 </p>
+
+---
+##  Theoretical Guarantees
+
+
+### Global convergence of BOOOM (restart-based)
+
+Under mild regularity conditions on the objective function—specifically boundedness and continuity on the Stiefel manifold, together with local smoothness and second-order sufficiency near a global minimizer—BOOOM is guaranteed to achieve global convergence in probability. These guarantees do not rely on convexity and do not require gradient or Hessian information. Global exploration is achieved through restart-based derivative-free search over a compact rotation-parameter domain, enabling BOOOM to escape poor local minima even for highly non-convex objectives. 
