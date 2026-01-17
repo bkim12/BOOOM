@@ -26,7 +26,7 @@ manopt
 The extracted `manopt` folder should be stored under Benchmark study folder. 
 
 ```text
-Benchmark stduy
+Benchmark study
 ├── manopt
 ├── Simulation result
 ├── supplement
