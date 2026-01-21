@@ -58,6 +58,11 @@ The performance is evaluated using the mean absolute error (MAE) between the est
 The MAE values are summarized, and the corresponding plots are reported in the manuscript.
 
 
+
+## Code Reproducibility
+
+To reproduce all numerical results reported in the main manuscript, please follow the steps below.
+
 ### Step 1: Run low rank and sparse matrix decomposition simulations
 
 Run `simulation.m`.
