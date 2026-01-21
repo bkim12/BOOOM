@@ -61,7 +61,8 @@ The MAE values are summarized, and the corresponding plots are reported in the m
 
 ## Code Reproducibility
 
-To reproduce all numerical results reported in the main manuscript, please follow the steps below.
+To reproduce all numerical results reported in the main manuscript, please follow the steps below.    
+    **Note:** GoDec+ may not reproduce identical results due to its algorithmic nature.
 
 ### Step 1: Run low rank and sparse matrix decomposition simulations
 
