@@ -69,6 +69,10 @@ Simulations are performed under two dimension setting with $Q$:  $p\times d$ ∈
 The maximum value of the objective function (Heterogeneous quadratic form) is summarized and its corresponding plots reported in the manuscript.
 
 
+## Code Reproducibility
+
+To reproduce all numerical results reported in the main manuscript, please follow the steps below.
+
 ### Step 1: Run heterogeneous quadratic form simulations
 
 Run the script `simulation.m` using following positive semidefinite matrix pattern:
