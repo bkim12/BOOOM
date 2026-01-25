@@ -30,7 +30,7 @@ Benchmark study
 ├── manopt
 ├── Simulation result
 ├── supplement
-├── benchmark study.m
+├── benchmark_study.m
 └── Summary.m
 
 ```
@@ -42,7 +42,7 @@ To reproduce all numerical results reported in the main manuscript, please follo
 
 ### Step 1: Run Benchmark Simulations
 
-Run the script `benchmark study.m` for the following test functions:
+Run the script `benchmark_study.m` for the following test functions:
 
 - `input_vals = 1` : Ackley  
 - `input_vals = 2` : Griewank  
