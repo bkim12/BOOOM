@@ -6,7 +6,7 @@ This study analyzes a colorectal cancer (CRC) metabolite dataset consisting of 2
 1. Run `metabolite_analysis.m` to evaluate **model performance** across a grid of penalty combinations.
 For each $(\lambda_1,\lambda_2)$ pair, the script computes: **misclassification rate** and **proportion of non zero columns** (sparsity).
 In this study, $\lambda_1$ and  $\lambda_2$ take integer values **from 0 to 8**. To **keep the downstream scripts** (Pareto plot and optimal-solution analyses) aligned with the saved outputs, 
-run the code by **fixing $\lambda_1$** and sweeping $\lambda_2$ from 0 to 9 in each run.
+run the code by **fixing $\lambda_1$** and sweeping $\lambda_2$ from 0 to 8 in each run.
 
       **output**: Q_matrices_d_20_0.m, Result_n_277_p_110_d_20_0.csv.    
       The trailing `_0` in each filename denotes the $\lambda_1$ value used for that run (e.g., `_0` corresponds to $\lambda_1 = 0$).
