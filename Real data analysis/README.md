@@ -21,7 +21,7 @@ run the code by **fixing $\lambda_1$** and sweeping $\lambda_2$ from 0 to 8 in e
 
 4. Run `importance_score_plot.m` to **visualize importance scores**, showing the top 20 metabolites for one Pareto-optimal solution.  
 
-    **output**: importance_vars_v3.png
+    **output**: importance_score.png
 
 
 For data preparation, run `data_setup.R`
