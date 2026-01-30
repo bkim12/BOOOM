@@ -1,0 +1,10 @@
+Row,min value,value s.e.,time [mean (se)]
+BOOOM,1.74e+01,1.38e-01,18000.18 (0.044)
+BOOOMparallel,1.74e+01,1.34e-01,18000.94 (0.260)
+fmincon:active-set,NaN,NaN,NaN (NaN)
+fmincon:interior-point,NaN,NaN,NaN (NaN)
+fmincon:sqp,NaN,NaN,NaN (NaN)
+Manopt:barzilai-borwein,4.63e+00,2.34e+00,18007.36 (1.661)
+Manopt:conjugate-gradient,2.30e+01,2.50e-02,16870.36 (792.598)
+Manopt:steepest-descent,2.30e+01,3.35e-02,18013.79 (1.486)
+Manopt:trust-region,2.30e+01,2.49e-02,18347.79 (97.217)
