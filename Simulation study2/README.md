@@ -19,6 +19,28 @@ Alternatively, you can use the PROPACK files included in the author’s AccAltPr
 For copyright reasons, the GoDec+ source files are not included in this repository. 
 Please download `lowrank_corr.m` from the author’s GitHub repository and place it under `supplement/GoDec_plus/`
 
+This repository includes code and implementations adapted from the following
+open-source projects:
+
+- **AccAltProj (Accelerated Alternating Projections)**  
+  https://github.com/caesarcai/AccAltProj_for_RPCA  
+  Licensed under the MIT License  
+  Copyright (c) 2019 HanQin Cai, Jian-Feng Cai, Ke Wei
+
+- **LRSD-TNNSR (Low-rank and sparse matrix decomposition via the truncated nuclear norm and a sparse regularizer)**  
+  https://github.com/xuezc/LRSD-TNNSR  
+  Licensed under the GNU General Public License v3 (GPLv3)  
+  Copyright (c) 2018 Z. Xue, J. Dong, Y. Zhao, C. Liu, and R. Chellali  
+
+Minor modifications were made for reproducibility and experimental consistency,
+including updates to MATLAB path settings, default parameter values, and
+script organization. All original copyright and license notices are preserved.
+
+Modified portions of LRSD-TNNSR remain licensed under GPLv3 and are provided
+for research and non-commercial use only, in accordance with the original
+authors’ licensing terms.
+
+
 After downloading the required packages, the directory should have the following structure:
 
 ```text
