@@ -1,0 +1,6 @@
+Methods,median value,IQR of values,median time (IQR)
+BOOOM,0.2177,0.0384,3600.05 (365.78)
+BOOOM parallel,0.2177,0.0384,3600.24 (0.31)
+AccAlt_projection,0.3906,0.1308,0.00 (0.00)
+GoDec+,0.8655,0.3446,0.00 (0.00)
+LRSD TNNSR,0.8647,0.5309,0.13 (0.02)
