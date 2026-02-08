@@ -3,6 +3,6 @@
 
 (i) `X`: Metabolites; `X_names`: corresponding names.
 
-(ii) `Y`: CRC cancer output (0: healthy subjects,  1: cancer subjects) 
+(ii) `Y`: CRC output (0: healthy,  1: cancer) 
 
 
