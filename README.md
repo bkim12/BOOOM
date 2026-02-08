@@ -178,6 +178,8 @@ The maximum value of objective funtion (Heterogeneous quadratic form) is summari
 
 This simulation study evaluates the performance of BOOOM and three algorithms for low rank and sparse matrix decomposition.
 
+$$\min \Vert {L}\Vert_* + \lambda \Vert {S}\Vert_1, \text{ such that } {X} = {L} + {S}$$
+
 $X = L + S$ where $X_{n\times p}$ is the original data,  $L_{n\times p}$ is low rank approximation with rank $d$ and $S_{n\times p}$ is a sparse matrix.
 
 Simulations are conducted under multiple settings for $X$, with dimension $(n\times p)$ ∈ {($50\times 10$), ($70\times 20$), ($100\times 50$), ($100\times 100$)}.
@@ -193,7 +195,21 @@ For each dimensional setting, we consider two choices of the rank of the low-ran
 
 In this case study, we identify metobolites associated with colorectal cancer (CRC) using supervised sparse principal component analysis. The goal is to select a sparse set of metabolites while maintaining strong discriminative power between healthy and cancer groups. The model uses two penalty terms: a sparsity penalty (to control the number of selected metabolites) and a discriminative penalty (to encourage separation between the two groups).
 
-Below is the result for a selected optimal solution, showing the top 20 metabolites ranked by importance.
+$$\min_{Q \in \mathrm{St}(p,d)}\ \parallel X - XQQ^\top \parallel_F^{2} + \lambda_1 \parallel Q\parallel_{2,1} + \lambda_2 \mathcal{L}_{\mathrm{Fisher}}(XQ, Y)$$
+
+where $\parallel·\parallel_{2,1}$ represents $L_{2,1}$ norm and $\mathcal{L}_{\mathrm{Fisher}}$ denotes Fisher discriminant loss. $\lambda_1, \lambda_2 \in \lbrace 10^0,10^1 \ldots,10^8\ \rbrace$
+
+
+Below is the pareto curve plot, showing the trade-off between misclassification rate and sparsity across different penalty parameter combinations.
+
+<p align="center">
+  <img src="figures/pareto_plot.png" width="85%">
+</p>
+
+
+
+Below is the result for a selected optimal solution $(\lambda_1: 10^6  , \lambda_2: 10^3)$, showing the top 20 metabolites ranked by importance.
+The importance score is measured by $L_2$ norm of the solutioin $Q$. This measrues contribution of metabolites on $XQ$
 
 
 <p align="center">
