@@ -192,18 +192,12 @@ For each dimensional setting, we consider two choices of the rank of the low-ran
 ##  Benchmark experiments 3:  Independent Component Analysis
 
 This simulation study evaluates the performance of BOOOM, FastICA, Infomax and Picard to solve the ICA problem.
-ICA seeks to recover statistically independent latent sources from observed linear mixtures. Given an observed data matrix
-
-$$X = AS$$
-
-where $X\in  ℝ^{p\times n}$ is an observed data that constructed from an unknown mixing matrix $A \in  ℝ^{p\times p}$ and latent independent source signals $S \in  ℝ^{p\times n}$.
-
-The goal is to estimate an unmixing matrix $W$ to recover signals $\hat{S} = WX$ by maximizing the log-cosh contrast function as follows:
-
+Given an observed data matrix $X = AS$, the goal is to estimate an unmixing matrix $W$ to recover signals $\hat{S} = WX$ by maximizing the log-cosh contrast function as follows:
 
 $$\max_{W \in \mathrm{St}(p,p)} \ \sum_{t=1}^{n} \sum_{i=1}^{p} \text{log cosh}(a_1 w_i^T x_t)$$
 
-where $w_i$ refers to the $i$-th row of W, $x_t$ represents the $t$-th observations and $a_i>0$ is fixed at 1 in this experiments.
+where $X\in  ℝ^{p\times n}$ is an observed data that constructed from an unknown mixing matrix $A \in  ℝ^{p\times p}$ and latent independent source signals $S \in  ℝ^{p\times n}$.
+$w_i$ refers to the $i$-th row of W, $x_t$ represents the $t$-th observations and $a_i>0$ is fixed at 1 in this experiments.
 
 Simulations are conducted under four dimension settings where the observed data matroix $X \in (p\times n)$ ∈ { $(20\times 50)$, $(20\times 200)$, $(50\times 125)$, $(50\times 500)$ }.
 
@@ -224,7 +218,7 @@ The Varimax criterion is defined by,
 
 $$ V(R) = \sum_{j=1}^{p} \left[\frac{1}{n}\sum_{k=1}^{n} B_{kj}^{4}- \left(\frac{1}{n}\sum_{k=1}^{n} B_{kj}^{2}\right)^2 \right] $$
 
-In our implementation, we reformulate the problem as minimizing the objective function $-V(R)$
+In this implementation, we reformulate the problem as minimizing the objective function $-V(R)$
 
 Simulations are conducted under eight dimension settings where the dimension of loading matrix $A$ $(n,p)$ ∈ { $(30, 5)$, $(60, 5)$, $(50, 10)$, $(100, 10)$ , $(80, 20)$, $(150, 20)$ , $(120, 30)$, $(200, 30)$ }.
 
@@ -237,13 +231,11 @@ Simulations are conducted under eight dimension settings where the dimension of 
 
 This simulation study evaluates the performance of BOOOM, JacobiAJD, Riemannian gradient descent and Riemannian trust-region to solve OJD problem.
 
-The goal seeks an orthogonal matrix that makes a set of symmetric matrices simultaneously as diagonal as possible. Given symmmetric matrices $C_1,..., C_m \in ℝ^{p\times p}$, 
-the problem is formulated as 
+Given symmmetric matrices $C_1,..., C_m \in ℝ^{p\times p}$, the goal seeks an orthogonal matrix that makes a set of symmetric matrices simultaneously as diagonal as possible. The problem objective is formulated as 
 
 $$\min_{W \in \mathrm{St}(p,p)} \ \sum_{k=1}^{m} \Vert \text{offdiag}(W^TC_kW)\Vert_F^{2}$$
 
-Here, $\text{offdiag}(\cdot)$ denotes the off-diagonal part of a matrix and $\Vert\cdot\Vert_F^{2}$ is the Frobenius norm.
-
+$\text{offdiag}(\cdot)$ denotes the off-diagonal part of a matrix and $\Vert\cdot\Vert_F^{2}$ is the Frobenius norm.
 
 Simulations are conducted under four dimension settings, specified by the the matrix dimension $p$ and the number of matrices $m$ $(p,m)$ ∈ { $(20, 5)$, $(20, 100)$, $(50, 5)$, $(50, 10)$ }.
 
@@ -289,7 +281,7 @@ Below is the pareto curve plot, showing the trade-off between misclassification 
 
 
 
-Below is the result for a selected optimal solution $(\lambda_1: 10^6  , \lambda_2: 10^3)$, showing the top 20 metabolites ranked by importance.
+Below is the result for a selected optimal solution $(\lambda_1, \lambda_2): (10^6, 10^3)$, showing the top 20 metabolites ranked by importance.
 The importance score is measured by $L_2$ norm of the solutioin $Q$. This measrues contribution of metabolites on $XQ$
 
 
