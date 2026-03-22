@@ -11,10 +11,9 @@ BOOOM performs optimization **directly on the Stiefel manifold**, ensuring feasi
 
 ```text
 BOOOM/
-├── Benchmark/                 # Benchmark experiments and comparisons
-├── Real data analysis/        # Real-data application 
-├── Simulation study1/         # Simulation: heterogeneous quadratic form analysis
-├── Simulation study2/         # Simulation: low-rank and sparse decomposition analysis
+├── Benchmark experiments/     # Benchmark experiments and comparisons on various orthogonal optimization problems
+├── Benchmark study/           # Benchmark experiments and comparisons on classical functions 
+├── Real data application/     # Real-data application 
 ├── figures/                   # Figures used in the paper (e.g., diagrams, flowcharts)
 └── README.md                  # Main repository README
 ```
@@ -156,7 +155,7 @@ Under mild regularity conditions on the objective function—specifically bounde
 
 
 ---
-##  Simulation Study 1: Heterogeneous quadratic form analysis
+##  Benchmark experiments 1: Heterogeneous quadratic form analysis
 
 This simulation study evaluates the performance of BOOOM and semidefinite programming (SDP) relaxation on a class of heterogeneous quadratic form optimization problems over the Stiefel manifold.
 
@@ -169,12 +168,12 @@ Simulations are performed for two settings with $Q$:  $p\times d$ ∈ {($20\time
 The maximum value of objective funtion (Heterogeneous quadratic form) is summarized below.
 
 <p align="center">
-  <img src="figures/HQ_max_value_plots.png" width="85%">
+  <img src="figures/Boxplots_HQF.png" width="85%">
 </p>
 
 
 ---
-##  Simulation Study 2:  Low rank and Sparse Matrix Decomposition
+##  Benchmark experiments 2:  Low rank and Sparse Matrix Decomposition
 
 This simulation study evaluates the performance of BOOOM and three algorithms for low rank and sparse matrix decomposition.
 
@@ -186,7 +185,89 @@ Simulations are conducted under multiple settings for $X$, with dimension $(n\ti
 For each dimensional setting, we consider two choices of the rank of the low-rank component, namely $d=5$ and $d=10$.
 
 <p align="center">
-  <img src="figures/MAE_L.png" width="85%">
+  <img src="figures/Boxplots_LRSD.png" width="85%">
+</p>
+
+---
+##  Benchmark experiments 3:  Independent Component Analysis
+
+This simulation study evaluates the performance of BOOOM, FastICA, Infomax and Picard to solve the ICA problem.
+ICA seeks to recover statistically independent latent sources from observed linear mixtures. Given an observed data matrix
+
+$$X = AS$$
+
+where $X\in  ℝ^{p\times n}$ is an observed data that constructed from an unknown mixing matrix $A \in  ℝ^{p\times p}$ and latent independent source signals $S \in  ℝ^{p\times n}$.
+
+The goal is to estimate an unmixing matrix $W$ to recover signals $\hat{S} = WX$ by maximizing the log-cosh contrast function as follows:
+
+
+$$\max_{W \in \mathrm{St}(p,p)} \ \sum_{t=1}^{n} \sum_{i=1}^{p} \text{log cosh}(a_1 w_i^T x_t)$$
+
+where $w_i$ refers to the $i$-th row of W, $x_t$ represents the $t$-th observations and $a_i>0$ is fixed at 1 in this experiments.
+
+Simulations are conducted under four dimension settings where the observed data matroix $X \in (p\times n)$ ∈ { $(20\times 50)$, $(20\times 200)$, $(50\times 125)$, $(50\times 500)$ }.
+
+The Amari distance is used to assess and compare the accuracy of source recovery across the different methods.
+
+<p align="center">
+  <img src="figures/Boxplots_ICA.png" width="85%">
+</p>
+
+---
+##  Benchmark experiments 4:  Varimax Factor Rotation
+
+This simulation study evaluates the performance of BOOOM and the classic Varimax rotation function in matlab (rotatefactors) to find an orthogonal rotation matrix that maximizes the Varimax criterion.
+
+Given a loading matrix $A \in  ℝ^{n\times p}$, the goal is to find an orthogonal rotation matrix $R \in St(p,p)$ such that the rotated loading matrix $B=AR$ has a simple and interpretable structure.  
+
+The Varimax criterion is defined by,
+
+$$ V(R) = \sum_{j=1}^{p} \left[\frac{1}{n}\sum_{k=1}^{n} B_{kj}^{4}- \left(\frac{1}{n}\sum_{k=1}^{n} B_{kj}^{2}\right)^2 \right] $$
+
+In our implementation, we reformulate the problem as minimizing the objective function $-V(R)$
+
+Simulations are conducted under eight dimension settings where the dimension of loading matrix $A$ $(n,p)$ ∈ { $(30, 5)$, $(60, 5)$, $(50, 10)$, $(100, 10)$ , $(80, 20)$, $(150, 20)$ , $(120, 30)$, $(200, 30)$ }.
+
+<p align="center">
+  <img src="figures/Boxplots_Varimax.png" width="85%">
+</p>
+
+---
+##  Benchmark experiments 5:  Orthogonal Joint Diagonalization 
+
+This simulation study evaluates the performance of BOOOM, JacobiAJD, Riemannian gradient descent and Riemannian trust-region to solve OJD problem.
+
+The goal seeks an orthogonal matrix that makes a set of symmetric matrices simultaneously as diagonal as possible. Given symmmetric matrices $C_1,..., C_m \in ℝ^{p\times p}$, 
+the problem is formulated as 
+
+$$\min_{W \in \mathrm{St}(p,p)} \ \sum_{k=1}^{m} \Vert \text{offdiag}(W^TC_kW)\Vert_F^{2}$$
+
+Here, $\text{offdiag}(\cdot)$ denotes the off-diagonal part of a matrix and $\Vert\cdot\Vert_F^{2}$ is the Frobenius norm.
+
+
+Simulations are conducted under four dimension settings, specified by the the matrix dimension $p$ and the number of matrices $m$ $(p,m)$ ∈ { $(20, 5)$, $(20, 100)$, $(50, 5)$, $(50, 10)$ }.
+
+<p align="center">
+  <img src="figures/Boxplots_AJD.png" width="85%">
+</p>
+
+---
+##  Benchmark experiments 6:  Reduced Kohn-Sham Rayleigh-Ritz Optimization
+
+This experiment study evaluates the performance of BOOOM and Riemannian gradient descent on a reduced Kohn–Sham Rayleigh–Ritz optimization problem .
+
+Given a Kohn-Sham Hamiltonian $H^*$ and an otrhonormal basis $B \in ℝ^{N_g\times p}$ for a reduced subspace, the projected Hamiltonian is defined by 
+
+$$ H_{red} = B^TH^*B$$
+
+The goal is to find an orthonormal matrix $Q \in St(p,d)$ that minimize 
+
+$$ \min_{Q \in \mathrm{St}(p,d)} \text{tr}(Q^TH_{red}Q)   $$
+
+Simulations are conducted under four reduced dimension settings $(p,d=2)$ ∈ { $(20, 2)$, $(50, 2)$, $(80, 2)$, $(100, 2)$ }.
+
+<p align="center">
+  <img src="figures/Boxplots_KS_results.png" width="85%">
 </p>
 
 
@@ -203,7 +284,7 @@ where $\parallel·\parallel_{2,1}$ represents $L_{2,1}$ norm and $\mathcal{L}_{\
 Below is the pareto curve plot, showing the trade-off between misclassification rate and sparsity across different penalty parameter combinations.
 
 <p align="center">
-  <img src="figures/pareto_plot.png" width="85%">
+  <img src="figures/pareto_curves.png" width="85%">
 </p>
 
 
