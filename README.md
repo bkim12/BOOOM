@@ -13,7 +13,7 @@ BOOOM performs optimization **directly on the Stiefel manifold**, ensuring feasi
 BOOOM/
 ├── Benchmark experiments/     # Benchmark experiments and comparisons on various orthogonal optimization problems
 ├── Benchmark study/           # Benchmark experiments and comparisons on classical functions 
-├── Real data analysis/     # Real-data application 
+├── Real data analysis/        # Real-data application 
 ├── figures/                   # Figures used in the paper (e.g., diagrams, flowcharts)
 └── README.md                  # Main repository README
 ```
