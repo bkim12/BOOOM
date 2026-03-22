@@ -1,0 +1,4 @@
+Methods,median value,IQR of values,median time (IQR)
+BOOOM,160.8502,94.1408,3602.71 (0.84)
+BOOOM parallel,160.8581,94.1405,950.30 (2144.97)
+SDP,53.9247,72.0434,16.36 (2.34)
