@@ -104,7 +104,7 @@ BOOOM represents **candidate solutions** as
 $$Q_{new}= R_{ij}(\theta)Q_0,   1 \leq i < j \leq p$$
 
 <p align="center">
-  <img src="figures/Fermis_principle_constraint.png" width="70%">
+  <img src="figures/Fermis_principle_constraint.jpg" width="70%">
 </p>
 
 
