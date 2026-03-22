@@ -1,0 +1,17 @@
+"metric","case","method","median_value","IQR_value"
+"Objective gap","p = 20","BOOOM",0,1e-04
+"Objective gap","p = 20","RCG",0.6268,0.3295
+"Objective gap","p = 50","BOOOM",0,0
+"Objective gap","p = 50","RCG",0.8889,0.1998
+"Objective gap","p = 80","BOOOM",1e-04,1e-04
+"Objective gap","p = 80","RCG",1.0091,0.2142
+"Objective gap","p = 100","BOOOM",1e-04,1e-04
+"Objective gap","p = 100","RCG",1.0138,0.2936
+"KKT residual","p = 20","BOOOM",0.0038,0.0027
+"KKT residual","p = 20","RCG",0.6003,0.2462
+"KKT residual","p = 50","BOOOM",0.0075,0.0015
+"KKT residual","p = 50","RCG",0.8219,0.2799
+"KKT residual","p = 80","BOOOM",0.0099,0.0023
+"KKT residual","p = 80","RCG",0.9502,0.4419
+"KKT residual","p = 100","BOOOM",0.0114,0.0027
+"KKT residual","p = 100","RCG",1.0909,0.3937
