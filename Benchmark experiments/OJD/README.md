@@ -37,7 +37,7 @@ OJD
 
 ## Benchmark experiments: Orthogonal(Approximate) joint diagonalization(OJD/AJD)
 
-This simulation study evaluates the performance of BOOOM, JacobiAJD, Riemannian gradient descen and Riemannian trust-region to solve OJD problem.
+This simulation study evaluates the performance of BOOOM, JacobiAJD, Riemannian gradient descent and Riemannian trust-region to solve OJD problem.
 
 
 
