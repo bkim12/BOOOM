@@ -27,12 +27,12 @@ Place the extracted `cvx` folder under the `supplement` folder.
 ```text
 HeterQuadForm
 ├── BOOOM
-├── Simulation result
+├── Outputs
 ├── supplement
         ├── cvx
         ├── create_block_diagonal_PSD.m
 	  ⋮	
-├── simulation.m
+├── Comparison_study_HQF.m
 └── summary.m
 
 ```
