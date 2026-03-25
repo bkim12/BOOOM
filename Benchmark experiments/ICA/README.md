@@ -1,3 +1,53 @@
+## Required Dependency: eeglab & Picard
+
+eeglab and Picard are required to reproduce the simulation study using the Infomax and Picard algorithms, respectively.
+
+Please download the eeglab and Picard for MATLAB directly from the official website:
+
+👉 eeglab: https://sccn.ucsd.edu/eeglab/download.php
+
+👉 picard: https://github.com/mind-inria/picard/tree/master/matlab_octave
+
+After downloading and extracting zip files, the directory should have the following structure:
+
+```text
+eeglab
+  ├──functions
+     ├──sigprocfunc
+        ├──runica.m
+                ⋮ 
+  ├──sample_data
+          ⋮ 
+```
+
+
+```text
+picard-master
+  ├──examples
+     ├──matlab_octave
+        ├──picard.m
+          ⋮ 
+```
+
+
+After installation, place the installed files in the supplement folder, alongside the eeglab and picard-master directories. 
+
+```text
+ICA
+├── BOOOM
+├── Outputs
+├── supplement
+    ├── eeglab
+    ├── FastICA_25
+    ├── picard-master
+       ├──matlab_octave
+         ├──picard.m
+	  ⋮	
+├── Comparison_study_ICA.m
+
+
+```
+
 ## Benchmark experiments: Independent component analysis(ICA)
 
 This simulation study evaluates the performance of BOOOM, FastICA, Infomax and Picard to solve the ICA problem.
