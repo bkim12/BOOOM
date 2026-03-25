@@ -1,12 +1,14 @@
-## Manopt Toolbox Requirement
+## Required Dependency: CVX Toolbox & KSSOLV 
 
-Manopt Toolbox is required to reproduce a reduced Kohn-Sham Rayleigh-Ritz optimization
+Manopt Toolbox are KSSOLV(KSSOLV2.0) are required to reproduce a reduced Kohn-Sham Rayleigh-Ritz optimization
 
-Please download the Manopt MATLAB toolbox directly from the official website:
+Please download the Manopt MATLAB toolbox and KSSOLV2.0 directly from the official website:
 
 👉 https://www.manopt.org/
 
-After downloading and extracting the toolbox, the `manopt` directory should have the following structure:
+👉 https://www.kssolv.org/
+
+After downloading and extracting the files, the `manopt` and `kssolv2.0` directories should have the following structure:
 
 ```text
 manopt
@@ -23,13 +25,26 @@ manopt
 ├── manopt_version.m
 
 ```
-The extracted `manopt` folder should be stored under KohnSham folder. 
 
 ```text
-KohnSham
-├── BOOOM
+kssolv2.0
+├── docs
+├── examples
+├── external
+├── kssolvsrc
+    ├── SCF_DCM
+        ├── scf.m
+├── ppdata
+
+```
+
+
+The extracted `manopt` and `kssolv2.0` file folders should be placed under supplement folder. 
+
+```text
+supplement
+├── kssolv2.0
 ├── manopt
-├── Outputs
 
 ```
 
