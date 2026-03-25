@@ -23,13 +23,12 @@ manopt
 ├── manopt_version.m
 
 ```
-The extracted `manopt` folder should be stored under OJD folder. 
+The extracted `manopt` folder should be stored under supplement folder. 
 
 ```text
-OJD
-├── BOOOM
+supplement
 ├── manopt
-├── Outputs
+
 
 ```
 
