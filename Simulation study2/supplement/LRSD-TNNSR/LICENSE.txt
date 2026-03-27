@@ -1,6 +1,0 @@
-Copyright 2018 Z. Xue, J. Dong, Y. Zhao, C. Liu, and R. Chellali,
-
-This software is a free software distributed under the terms of the GNU 
-Public License version 3 (http://www.gnu.org/licenses/gpl.txt). You can 
-redistribute it and/or modify it under the terms of this licence, for 
-personal and non-commercial use and research purpose.
