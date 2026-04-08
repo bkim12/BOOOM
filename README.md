@@ -18,8 +18,6 @@ BOOOM/
 └── README.md                  # Main repository README
 ```
 
-
-
 ---
 
 ## 🔑 Key Features
