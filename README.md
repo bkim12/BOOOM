@@ -11,7 +11,7 @@ BOOOM performs optimization **directly on the Stiefel manifold**, ensuring feasi
 
 ```text
 BOOOM/
-├── ResNet exmaple/            # Illustration of BOOOM as a black-box optimization tool in deep networks (e.g., ResNet)
+├── ResNet example/            # Illustration of BOOOM as a black-box optimization tool in deep networks (e.g., ResNet)
 ├── Benchmark experiments/     # Benchmark experiments and comparisons on various orthogonal optimization problems
 ├── Benchmark study/           # Benchmark experiments and comparisons on classical functions 
 ├── Real data analysis/        # Real-data application 
