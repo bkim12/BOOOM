@@ -90,7 +90,7 @@ The resulting optimization problem is typically non-convex and defined over a ge
 To demonstrate the practical implications of BOOOM in a true black-box setting, consider a pretrained deep neural network (e.g., a ResNet classifier) where only forward predictions are available. In such settings, gradients, model parameters, and internal architecture are inaccessible, only input-output evaluations can be queried.
 
 Let  
-- x ∈ ℝ^p denote an input (e.g., an image),  
+- $x \in \mathrm{R}^p$ denote an input (e.g., an image),  
 - $g(x) = (p_1(x), …, p_C(x))$ denote the predicted class probabilities, where $p_j(x)$ is the probability assigned to class j and $∑_j p_j(x) = 1$,  
 - y* denote the true class label.  
 
@@ -102,7 +102,7 @@ Here, U is an orthonormal transformation (e.g., rotation or projection), ensurin
 
 We define the following black-box objective function:
 
-    f(U) = p_{y*}(R(U; x)) − max_{j ≠ y*} p_j(R(U; x))
+    $$f(U) = p_{y*}(R(U; x)) − max_{j ≠ y*} p_j(R(U; x))$$
 
 ### 🔍 Interpretation of the objective
 
