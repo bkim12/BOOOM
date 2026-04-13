@@ -103,7 +103,7 @@ Here, U is an orthonormal transformation (e.g., rotation or projection), ensurin
 We define the following black-box objective function:
 
 $$
-f(U) = p_{y^*}(R(U; x)) - \max_{j \neq y^*} p_j(R(U; x))
+f(U) = p_{y^\ast}(R(U; x)) - \max_{j \neq y^\ast} p_j(R(U; x))
 $$
 
 ### 🔍 Interpretation of the objective
