@@ -87,7 +87,7 @@ The resulting optimization problem is typically non-convex and defined over a ge
 
 ## 🎯 Black-box Optimization via Orthogonal Transformations (ResNet Example)
 
-To demonstrate the practical implications of BOOOM in a true black-box setting, consider a pretrained deep neural network (e.g., a ResNet classifier) where only forward predictions are available. In such settings, gradients, model parameters, and internal architecture are inaccessible—only input-output evaluations can be queried.
+To demonstrate the practical implications of BOOOM in a true black-box setting, consider a pretrained deep neural network (e.g., a ResNet classifier) where only forward predictions are available. In such settings, gradients, model parameters, and internal architecture are inaccessible, only input-output evaluations can be queried.
 
 Let  
 - x ∈ ℝ^p denote an input (e.g., an image),  
