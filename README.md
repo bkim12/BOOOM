@@ -88,6 +88,21 @@ The resulting optimization problem is typically non-convex and defined over a ge
 
 ---
 
+## 🎯 Black-box Optimization via Orthogonal Transformations
+
+To illustrate the flexibility of BOOOM in truly black-box settings, consider an application in deep learning where only forward evaluations of a model are available.
+
+In many modern scenarios (e.g., closed-source APIs or deployed neural networks), gradients and internal model parameters are inaccessible. However, one can still explore transformations of the input through orthogonality-constrained operations and evaluate the resulting outputs.
+
+BOOOM enables such optimization by searching over orthogonal transformations of the input, relying solely on function evaluations. This allows identification of transformations that significantly alter model predictions, even when the underlying model is treated as a black box.
+
+<p align="center">
+  <img src="figures/BOOOM_output_chair_0001_comparison_initial_best_worst.png" width="90%">
+</p>
+
+**Illustration:** Starting from an initial input (left), BOOOM explores orthogonal transformations to identify (i) a transformation that maximizes model confidence (center), and (ii) a transformation that minimizes it (right). This demonstrates how structured, geometry-preserving perturbations can induce highly non-linear effects in model outputs.
+
+---
 
 ##   Method Overview
 
