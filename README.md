@@ -91,7 +91,7 @@ To demonstrate the practical implications of BOOOM in a true black-box setting, 
 
 Let  
 - x ∈ ℝ^p denote an input (e.g., an image),  
-- g(x) = (p₁(x), …, p_C(x)) denote the predicted class probabilities, where p_j(x) is the probability assigned to class j and ∑_j p_j(x) = 1,  
+- $g(x) = (p₁(x), …, p_C(x))$ denote the predicted class probabilities, where $p_j(x)$ is the probability assigned to class j and $∑_j p_j(x) = 1$,  
 - y* denote the true class label.  
 
 Instead of modifying the input arbitrarily, BOOOM considers structure-preserving orthogonal transformations of the form:
