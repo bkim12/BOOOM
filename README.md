@@ -52,9 +52,6 @@ Define $\mathrm{St}(p,d)=\lbrace Q\in ℝ^{p\times d}: Q^\top Q=I_d\,\rbrace$, i
 
 ---
 
-
-
-
 ## 📌 Problem Setting
 
 BOOOM addresses **general orthonormal matrix estimation problems** arising in high-dimensional statistics, machine learning, and signal processing, where the objective function may be non-convex, multi-modal, non-smooth, or available only as a black box. Such problems appear in a wide range of applications, including dimension reduction, subspace learning, matrix factorization, joint diagonalization, and low-rank structure estimation.
@@ -88,19 +85,54 @@ The resulting optimization problem is typically non-convex and defined over a ge
 
 ---
 
-## 🎯 Black-box Optimization via Orthogonal Transformations
+## 🎯 Black-box Optimization via Orthogonal Transformations (ResNet Example)
 
-To illustrate the flexibility of BOOOM in truly black-box settings, consider an application in deep learning where only forward evaluations of a model are available.
+To demonstrate the practical implications of BOOOM in a true black-box setting, consider a pretrained deep neural network (e.g., a ResNet classifier) where only forward predictions are available. In such settings, gradients, model parameters, and internal architecture are inaccessible—only input-output evaluations can be queried.
 
-In many modern scenarios (e.g., closed-source APIs or deployed neural networks), gradients and internal model parameters are inaccessible. However, one can still explore transformations of the input through orthogonality-constrained operations and evaluate the resulting outputs.
+Let  
+- x ∈ ℝ^p denote an input (e.g., an image),  
+- g(x) = (p₁(x), …, p_C(x)) denote the predicted class probabilities, where p_j(x) is the probability assigned to class j and ∑_j p_j(x) = 1,  
+- y* denote the true class label.  
 
-BOOOM enables such optimization by searching over orthogonal transformations of the input, relying solely on function evaluations. This allows identification of transformations that significantly alter model predictions, even when the underlying model is treated as a black box.
+Instead of modifying the input arbitrarily, BOOOM considers structure-preserving orthogonal transformations of the form:
+
+    x → R(U; x),   where U ∈ St(p, k)
+
+Here, U is an orthonormal transformation (e.g., rotation or projection), ensuring that the transformation preserves geometric structure such as norms and relative relationships in the input space.
+
+We define the following black-box objective function:
+
+    f(U) = p_{y*}(R(U; x)) − max_{j ≠ y*} p_j(R(U; x))
+
+### 🔍 Interpretation of the objective
+
+- f(U) ∈ [−1, 1] measures how confidently the model predicts the true class relative to competing classes.  
+- Minimizing f(U):
+  - finds adversarial transformations that suppress the true class  
+  - reveals worst-case behavior of the model under structured perturbations  
+- Maximizing f(U):
+  - finds transformations that enhance the true class prediction  
+  - identifies robust or optimal viewpoints of the input  
+
+### 🚀 Why this is important
+
+- The objective is non-convex, highly non-linear, and derivative-inaccessible  
+- Even small orthogonal transformations can induce large changes in prediction  
+- Classical gradient-based adversarial methods cannot be applied here  
+- BOOOM provides a general-purpose optimizer that:
+  - works purely with function evaluations  
+  - respects orthogonality constraints  
+  - explores complex transformation spaces effectively  
 
 <p align="center">
   <img src="figures/BOOOM_output_chair_0001_comparison_initial_best_worst.png" width="90%">
 </p>
 
-**Illustration:** Starting from an initial input (left), BOOOM explores orthogonal transformations to identify (i) a transformation that maximizes model confidence (center), and (ii) a transformation that minimizes it (right). This demonstrates how structured, geometry-preserving perturbations can induce highly non-linear effects in model outputs.
+**Illustration:** Starting from an initial input (left), BOOOM searches over orthogonal transformations to identify  
+(i) a transformation that maximizes confidence in the true class (center), and  
+(ii) a transformation that minimizes it (adversarial view, right).  
+
+This example highlights how BOOOM can serve as a general optimization engine for designing and optimizing novel objective functions, even when the model is treated as a complete black box.
 
 ---
 
